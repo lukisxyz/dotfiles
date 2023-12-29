@@ -1,7 +1,15 @@
 vim.g.mapleader = " "
 
 require("packer").startup(function(use)
+	use { "altercation/vim-colors-solarized"  }
+	use {
+    	'junegunn/fzf.vim',
+    	requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+ 	}
+	use { 'mustache/vim-mustache-handlebars' }
 	use { "wbthomason/packer.nvim" }
+	use { 'kyazdani42/nvim-web-devicons' }
+	use { 'amirrezaask/fuzzy.nvim', requires={'nvim-lua/plenary.nvim'}}
 	use { "ellisonleao/gruvbox.nvim" }
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use {
@@ -37,7 +45,7 @@ require("packer").startup(function(use)
 		{'rafamadriz/friendly-snippets'}, -- Optional
   	},
 	use {"akinsho/toggleterm.nvim", tag = '*' },
-	use "jhlgns/naysayer88.vim",
+	-- use "jhlgns/naysayer88.vim",
 	use "terrortylor/nvim-comment",
 	use "CreaturePhil/vim-handmade-hero"
 }
@@ -151,11 +159,13 @@ vim.cmd([[
 vim.cmd([[
 	augroup CustomHI
 		autocmd!
-		autocmd VimEnter * NoMatchParen 
+		autocmd VimEnter * NoMatchParen
 	augroup END
 ]])
 
 vim.o.background = "dark"
+
+vim.env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow'
 
 vim.keymap.set("i", "jj", "<Esc>")
 
