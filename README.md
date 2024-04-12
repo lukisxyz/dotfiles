@@ -1,1 +1,3 @@
-# My dotfiles configuration
+# Neovim Setup
+
+Walaupun akhirnya tetap pakai vscode 🤪
